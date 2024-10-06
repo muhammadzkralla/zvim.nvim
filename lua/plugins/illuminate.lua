@@ -3,7 +3,7 @@ return {
     config = function()
         require('illuminate').configure({
             delay = 100,                                            -- Optional: adjust the delay before highlighting
-            filetypes_denylist = { 'NvimTree', 'TelescopePrompt' }, -- Optional: filetypes to ignore
+            filetypes_denylist = { 'NvimTree', 'TelescopePrompt', "dashboard" }, -- Optional: filetypes to ignore
         })
 
         -- Key mappings for navigating similar words

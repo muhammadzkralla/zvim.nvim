@@ -104,17 +104,17 @@ return {
                         if cmp.visible() then
                             cmp.select_next_item() -- Navigate to next completion item
                         else
-                            fallback() -- Insert a tab character
+                            fallback()             -- Insert a tab character
                         end
-                    end, { 'i', 's' }), -- In insert and select mode
+                    end, { 'i', 's' }),            -- In insert and select mode
 
                     ['<S-Tab>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_prev_item() -- Navigate to previous completion item
                         else
-                            fallback() -- Insert a tab character
+                            fallback()             -- Insert a tab character
                         end
-                    end, { 'i', 's' }), -- In insert and select mode
+                    end, { 'i', 's' }),            -- In insert and select mode
                     ['<Down>'] = cmp.mapping.select_next_item(),
                     ['<Up>'] = cmp.mapping.select_prev_item(),
                     ['<C-e>'] = cmp.mapping.abort(),
@@ -132,6 +132,27 @@ return {
                 },
                 experimental = {
                     ghost_text = true
+                },
+                formatting = {
+                    format = function(entry, item)
+                        local icons = icons.kinds
+                        if icons[item.kind] then
+                            item.kind = icons[item.kind] .. item.kind
+                        end
+
+                        local widths = {
+                            abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+                            menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+                        }
+
+                        for key, width in pairs(widths) do
+                            if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
+                                item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
+                            end
+                        end
+
+                        return item
+                    end,
                 },
             })
 
