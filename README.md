@@ -2,6 +2,9 @@
 
 My customized NeoVim configuration.
 
+![Screenshot 2024-10-07 012854](https://github.com/user-attachments/assets/7509f095-599c-4994-8fed-eb33ae85e137)
+
+
 # Installation
 You can run this bash script and it will automatically install my NeoVim Configuration based on LazyVim. <br>
 
