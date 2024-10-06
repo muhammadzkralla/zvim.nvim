@@ -84,3 +84,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank({ timeout = 200, higroup = 'YankHighlight' })
     end,
 })
+
+-- Enable persistent undo
+vim.opt.undofile = true
+
+-- Set undo directory to LazyVim's location
+vim.opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
