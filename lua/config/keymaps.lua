@@ -144,3 +144,18 @@ vim.keymap.set("n", "<C-f>", function()
         -- filter = function(client) return client.name == "tsserver" end
     })
 end, { desc = "Format Code" })
+
+-- Keymap to format only the selected code in visual mode
+vim.keymap.set("v", "<C-f>", function()
+    vim.lsp.buf.format({
+        async = true,
+        range = {
+            ["start"] = vim.api.nvim_buf_get_mark(0, "<"),
+            ["end"] = vim.api.nvim_buf_get_mark(0, ">"),
+        }
+    })
+end, { desc = "Format Selected Code" })
+
+-- -- Keymaps for switching windows
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { desc = "left window", noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { desc = "right window", noremap = true, silent = true })

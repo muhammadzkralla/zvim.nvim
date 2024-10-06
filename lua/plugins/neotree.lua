@@ -16,7 +16,9 @@ return {
             -- Optionally configure Neo-tree here
             require("neo-tree").setup({
                 filesystem = {
-                    follow_current_file = true,   -- Automatically focus the file in the explorer
+                    follow_current_file = {
+                        enabled = true,
+                    },   -- Automatically focus the file in the explorer
                     hijack_netrw_behavior = "open_current", -- Replace netrw
                 },
             })
