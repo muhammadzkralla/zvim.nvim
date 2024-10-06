@@ -1,0 +1,45 @@
+name: format
+
+on:
+  pull_request:
+    branches:
+      - "master"
+    paths:
+      - 'lua/**'
+      - 'snapshots/**'
+      - 'tests/**'
+      - 'utils/**'
+
+jobs:
+  stylua-check:
+    name: "Formatting check with Stylua"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint with stylua
+        uses: JohnnyMorganz/stylua-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # CLI arguments
+          version: 0.15.3
+          args: --check .
+
+  shfmt-check:
+    name: "Formatting check with shfmt"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '^1.21'
+
+      - name: Use shfmt
+        run: |
+          go install mvdan.cc/sh/v3/cmd/shfmt@latest
+
+      # https://google.github.io/styleguide/shellguide.html
+      - name: Check formatting
+        run: make style-sh

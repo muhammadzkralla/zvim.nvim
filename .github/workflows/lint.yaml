@@ -1,0 +1,38 @@
+name: lint
+
+on:
+  pull_request:
+    branches:
+      - "rolling"
+    paths:
+      - 'lua/**'
+      - 'snapshots/**'
+      - 'tests/**'
+      - 'utils/**'
+
+jobs:
+  lua-linter:
+    name: "Linting with luacheck"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: leafo/gh-actions-lua@v8
+      - uses: leafo/gh-actions-luarocks@v4
+
+      - name: Use luacheck
+        run: luarocks install luacheck
+
+      - name: Run luacheck
+        run: make lint-lua
+
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: "./utils"
+          ignore: "bin"

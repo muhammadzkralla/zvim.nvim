@@ -1,0 +1,43 @@
+-- plugins/lsp.lua
+
+return {
+  -- LSP Support
+  {
+    "neovim/nvim-lspconfig", -- LSP
+    dependencies = {
+      -- Automatically install LSPs to stdpath
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      -- Useful status updates for LSP
+      "j-hui/fidget.nvim",
+    },
+    config = function()
+      require("mason").setup() -- mason setup
+      require("mason-lspconfig").setup() -- mason-lspconfig setup
+
+      local lspconfig = require("lspconfig")
+
+      -- Add your LSP servers here
+      local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "jdtls", "ts_ls" }
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup {}
+      end
+    end,
+  },
+
+  -- Useful LSP extensions
+  {
+    "folke/neodev.nvim", -- Lua development
+    config = function()
+      require("neodev").setup() -- Automatically configures lua-dev for Neovim
+    end,
+  },
+
+  -- Shows LSP progress
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup()
+    end,
+  },
+}

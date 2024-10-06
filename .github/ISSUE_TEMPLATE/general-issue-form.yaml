@@ -1,0 +1,71 @@
+name: General Issue
+description: File a bug report not related to LSP (intellisense, completion, diagnostics, etc)
+labels: [bug]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        _Before reporting:_ search [existing issues](https://github.com/LunarVim/LunarVim/issues?q=is%3Aissue) (both open and closed) and check the [Troubleshooting guide](https://www.lunarvim.org/docs/troubleshooting).
+        If you need real-time help, join us on Discord. Thank you for helping us improve!
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem description
+      description: Also tell us, what did you expect to happen?
+      placeholder: |
+        Steps to reproduce the behavior:
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: LunarVim version
+      description: "output of `:LvimVersion` (hold shift when selecting and copy using the terminal's copy binding)"
+      placeholder: |
+        branch-commit
+    validations:
+      required: true
+  - type: input
+    id: nvim-version
+    attributes:
+      label: Neovim version (>= 0.9.1)
+      description: "Output of `nvim --version`"
+      placeholder: |
+        NVIM v0.10.0-dev-670+g2ecba65b4
+    validations:
+      required: true
+  - type: input
+    id: terminal-name
+    attributes:
+      label: Terminal name
+      description: "Name of terminal you are using"
+      placeholder: |
+        iTerm2, Wezterm,...
+    validations:
+      required: true
+  - type: input
+    id: system-version
+    attributes:
+      label: "Operating system/version"
+      placeholder: "macOS 11.5"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce"
+      description: "Steps to reproduce using the minimal config."
+      placeholder: |
+        1. `nvim -u ~/.local/share/lunarvim/lvim/tests/minimal_lsp.lua`
+        2. ...
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem
