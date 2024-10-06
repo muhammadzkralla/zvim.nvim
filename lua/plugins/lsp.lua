@@ -28,7 +28,7 @@ return {
         "ray-x/lsp_signature.nvim",
         config = function()
             require("lsp_signature").setup({
-                bind = true,       -- This is mandatory
+                bind = true,           -- This is mandatory
                 handler_opts = {
                     border = "rounded" -- Options: 'single', 'double', 'shadow', 'none'
                 }
@@ -39,13 +39,13 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "hrsh7th/nvim-cmp",              -- Completion framework
-            "hrsh7th/cmp-nvim-lsp",          -- LSP source for nvim-cmp
-            "hrsh7th/cmp-buffer",            -- Buffer source for nvim-cmp
-            "hrsh7th/cmp-path",              -- Path source for nvim-cmp
-            "L3MON4D3/LuaSnip",              -- Snippet engine
-            "saadparwaiz1/cmp_luasnip",      -- Snippet completion
-            "rafamadriz/friendly-snippets",  -- Snippet collection
+            "hrsh7th/nvim-cmp",                    -- Completion framework
+            "hrsh7th/cmp-nvim-lsp",                -- LSP source for nvim-cmp
+            "hrsh7th/cmp-buffer",                  -- Buffer source for nvim-cmp
+            "hrsh7th/cmp-path",                    -- Path source for nvim-cmp
+            "L3MON4D3/LuaSnip",                    -- Snippet engine
+            "saadparwaiz1/cmp_luasnip",            -- Snippet completion
+            "rafamadriz/friendly-snippets",        -- Snippet collection
             "hrsh7th/cmp-nvim-lsp-signature-help", -- LSP signature help source
         },
         config = function()
@@ -63,9 +63,9 @@ return {
                 signs = {
                     text = {
                         [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error, -- Error icon
-                        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn, -- Warning icon
-                        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint, -- Hint icon
-                        [vim.diagnostic.severity.INFO] = icons.diagnostics.Info, -- Info icon
+                        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,   -- Warning icon
+                        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,   -- Hint icon
+                        [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,   -- Info icon
                     },
                 },
                 update_in_insert = false,
@@ -100,11 +100,23 @@ return {
                     end,
                 },
                 mapping = {
-                    ['<C-n>'] = cmp.mapping.select_next_item(),
-                    ['<C-p>'] = cmp.mapping.select_prev_item(),
-                    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<Tab>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item() -- Navigate to next completion item
+                        else
+                            fallback() -- Insert a tab character
+                        end
+                    end, { 'i', 's' }), -- In insert and select mode
+
+                    ['<S-Tab>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item() -- Navigate to previous completion item
+                        else
+                            fallback() -- Insert a tab character
+                        end
+                    end, { 'i', 's' }), -- In insert and select mode
+                    ['<Down>'] = cmp.mapping.select_next_item(),
+                    ['<Up>'] = cmp.mapping.select_prev_item(),
                     ['<C-e>'] = cmp.mapping.abort(),
                     ['<CR>'] = cmp.mapping.confirm({ select = true }),
                 },
