@@ -159,3 +159,8 @@ end, { desc = "Format Selected Code" })
 -- -- Keymaps for switching windows
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { desc = "left window", noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { desc = "right window", noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { desc = "bottom window", noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { desc = "top window", noremap = true, silent = true })
+
+vim.keymap.set('n', '<C-b>', function() require('telescope.builtin').live_grep() end,
+    { desc = "find text", noremap = true, silent = true })
