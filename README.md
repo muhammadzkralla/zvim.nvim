@@ -1,8 +1,8 @@
 # ZVIM.NVIM
 
-My customized NeoVim configuration.
+My customized NeoVim configuration and development environment. 🥷😈
 
-![Screenshot 2024-10-07 012854](https://github.com/user-attachments/assets/7509f095-599c-4994-8fed-eb33ae85e137) <hr>
+![Screenshot 2024-10-09 024502](https://github.com/user-attachments/assets/92878df2-e7a6-45cb-99c8-ff85c64afa06) <hr>
 ![Screenshot 2024-10-08 194311](https://github.com/user-attachments/assets/0ec2b42d-1423-4606-b763-cbbc64704857) <hr>
 ![Screenshot 2024-10-09 023343](https://github.com/user-attachments/assets/263dab18-25f7-4b7e-96ff-0b953ccb7882) <hr>
 ![Screenshot 2024-10-08 194550](https://github.com/user-attachments/assets/13fe3b65-48a4-4729-93b2-5d8d30bee80d) <hr>
@@ -10,7 +10,7 @@ My customized NeoVim configuration.
 
 
 # Installation
-You can run this bash script and it will automatically install my NeoVim Configuration based on LazyVim. <br>
+You can run this bash script and it will automatically install all the prerequisites and required software to be able to operate NeoVim with my set of plugins, options, and keymaps. 👽🍃<br>
 
 First, create a new file on your Linux distro : 
 ```bash
