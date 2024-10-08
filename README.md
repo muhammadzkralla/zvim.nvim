@@ -2,7 +2,11 @@
 
 My customized NeoVim configuration.
 
-![Screenshot 2024-10-07 012854](https://github.com/user-attachments/assets/7509f095-599c-4994-8fed-eb33ae85e137)
+![Screenshot 2024-10-07 012854](https://github.com/user-attachments/assets/7509f095-599c-4994-8fed-eb33ae85e137) <hr>
+![Screenshot 2024-10-08 194311](https://github.com/user-attachments/assets/0ec2b42d-1423-4606-b763-cbbc64704857) <hr>
+![Screenshot 2024-10-09 023343](https://github.com/user-attachments/assets/263dab18-25f7-4b7e-96ff-0b953ccb7882) <hr>
+![Screenshot 2024-10-08 194550](https://github.com/user-attachments/assets/13fe3b65-48a4-4729-93b2-5d8d30bee80d) <hr>
+![Screenshot 2024-10-09 022329](https://github.com/user-attachments/assets/699e5235-23bf-4ce8-907c-a6f4c77e16df) <hr>
 
 
 # Installation
