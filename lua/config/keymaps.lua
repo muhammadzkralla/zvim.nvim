@@ -164,3 +164,8 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { desc = "top window", noremap =
 
 vim.keymap.set('n', '<C-b>', function() require('telescope.builtin').live_grep() end,
     { desc = "find text", noremap = true, silent = true })
+
+-- delete
+vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'dw', '"_dw', { noremap = true, silent = true })

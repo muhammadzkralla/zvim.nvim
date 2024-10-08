@@ -92,6 +92,12 @@ return {
             -- Autocompletion configuration
             local cmp = require('cmp')
             local luasnip = require('luasnip')
+            local cmp_lsp = require("cmp_nvim_lsp")
+            local capabilities = vim.tbl_deep_extend(
+                "force",
+                {},
+                vim.lsp.protocol.make_client_capabilities(),
+                cmp_lsp.default_capabilities())
 
             cmp.setup({
                 snippet = {
@@ -176,10 +182,12 @@ return {
             })
 
             require("lspconfig").lua_ls.setup {
+                capabilities = capabilities,
                 settings = {
                     Lua = {
+                        runtime = { version = "Lua 5.1" },
                         diagnostics = {
-                            globals = { "vim" }
+                            globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
                         }
                     }
                 }
@@ -203,6 +211,21 @@ return {
 
             -- Load snippets from friendly-snippets
             require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+    },
+    {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
+
+        dependencies = { "rafamadriz/friendly-snippets" },
+
+        config = function()
+            local ls = require("luasnip")
+            ls.filetype_extend("javascript", { "jsdoc" })
+            ls.filetype_extend("java", { "javadoc" })
         end,
     }
 }

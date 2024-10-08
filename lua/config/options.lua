@@ -1,6 +1,4 @@
-vim.cmd.colorscheme("rose-pine")
-
-vim.opt.clipboard = "unnamedplus"
+vim.cmd.colorscheme("yugen")
 
 vim.opt.wrap = true
 vim.opt.number = true
