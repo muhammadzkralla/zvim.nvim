@@ -4,7 +4,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 
 -- undo
 vim.keymap.set("i", "<C-z>", "<Esc>ua", { desc = "undo", noremap = true, silent = true })
-vim.keymap.set("n", "<C-z>", "u", { desc = "undo", noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "x" }, "<C-z>", "u", { desc = "undo", noremap = true, silent = true })
 
 -- redo
 vim.keymap.set("i", "<C-r>", "<Esc><C-r>a", { desc = "redo", noremap = true, silent = true })
@@ -169,3 +169,12 @@ vim.keymap.set('n', '<C-b>', function() require('telescope.builtin').live_grep()
 vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'dw', '"_dw', { noremap = true, silent = true })
+
+-- window resize
+-- Resize window horizontally using Ctrl + Left/Right Arrow
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+
+-- Optionally, you can also map resizing vertically using Up/Down Arrow
+vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })

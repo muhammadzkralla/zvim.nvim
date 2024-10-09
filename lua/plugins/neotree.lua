@@ -15,6 +15,32 @@ return {
 
             -- Optionally configure Neo-tree here
             require("neo-tree").setup({
+                -- Use custom icons for different components
+                default_component_configs = {
+                    window = {
+                        position = "left", -- Position NeoTree on the left
+                        width = 35, -- Adjust width based on your preference
+                    },
+                    icon = {
+                        folder_closed = icons.kinds.Folder,
+                        folder_open = " ",
+                        folder_empty = " ",
+                        default = icons.kinds.File,
+                    },
+                    git_status = {
+                        symbols = {
+                            added     = icons.git.added,
+                            modified  = icons.git.modified,
+                            deleted   = icons.git.removed,
+                            renamed   = "", -- icon for renamed files
+                            untracked = "",
+                            ignored   = "",
+                            unstaged  = "",
+                            staged    = "",
+                            conflict  = "",
+                        },
+                    },
+                },
                 filesystem = {
                     follow_current_file = {
                         enabled = true,
