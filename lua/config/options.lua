@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("yugen")
+vim.cmd.colorscheme("rose-pine")
 
 vim.opt.wrap = true
 vim.opt.number = true
@@ -37,3 +37,6 @@ vim.opt.undofile = true
 
 -- Set undo directory to LazyVim's location
 vim.opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
+
+--autoread files
+vim.opt.autoread = true

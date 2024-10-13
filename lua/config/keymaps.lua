@@ -178,3 +178,11 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, si
 -- Optionally, you can also map resizing vertically using Up/Down Arrow
 vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
+
+-- Keymap for jumping forward in the snippet
+vim.api.nvim_set_keymap("i", "<Right>", "<cmd>lua require'luasnip'.jump(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("s", "<Right>", "<cmd>lua require'luasnip'.jump(1)<CR>", { noremap = true, silent = true })
+
+-- Keymap for jumping backward in the snippet
+vim.api.nvim_set_keymap("i", "<Left>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("s", "<Left>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { noremap = true, silent = true })
