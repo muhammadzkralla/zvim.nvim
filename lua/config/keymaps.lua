@@ -179,10 +179,10 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, si
 vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
--- Keymap for jumping forward in the snippet
-vim.api.nvim_set_keymap("i", "<Right>", "<cmd>lua require'luasnip'.jump(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("s", "<Right>", "<cmd>lua require'luasnip'.jump(1)<CR>", { noremap = true, silent = true })
+-- Jump forward in a snippet with <Tab>
+vim.api.nvim_set_keymap("i", "<Tab>", [[<cmd>lua if require'luasnip'.expand_or_jumpable() then require'luasnip'.jump(1) else vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n', true) end<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("s", "<Tab>", [[<cmd>lua if require'luasnip'.jumpable(1) then require'luasnip'.jump(1) end<CR>]], { noremap = true, silent = true })
 
--- Keymap for jumping backward in the snippet
-vim.api.nvim_set_keymap("i", "<Left>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("s", "<Left>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { noremap = true, silent = true })
+-- Jump backward in a snippet with <Shift-Tab>
+vim.api.nvim_set_keymap("i", "<S-Tab>", [[<cmd>lua if require'luasnip'.jumpable(-1) then require'luasnip'.jump(-1) else vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<S-Tab>', true, true, true), 'n', true) end<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("s", "<S-Tab>", [[<cmd>lua if require'luasnip'.jumpable(-1) then require'luasnip'.jump(-1) end<CR>]], { noremap = true, silent = true })
