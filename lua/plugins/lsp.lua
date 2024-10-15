@@ -134,7 +134,7 @@ return {
                     { name = 'path' },
                 }),
                 completion = {
-                    completeopt = "menu,menuone,noinsert" .. ("" and "" or ",noselect"),
+                    completeopt = "menu,menuone,noinsert" .. (true and "" or ",noselect"),
                 },
                 experimental = {
                     ghost_text = true
