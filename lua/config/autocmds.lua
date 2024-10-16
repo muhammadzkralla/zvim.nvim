@@ -1,7 +1,17 @@
--- -- Enable highlighting for the word under the cursor
--- vim.opt.cursorline = true -- Highlight the current line
--- vim.opt.hlsearch = true   -- Highlight search results
+-- Define a custom highlight group for yank highlighting
+vim.cmd [[
+  highlight YankHighlight guibg=#FFD700 guifg=#000000 ctermbg=214 ctermfg=0
+]]
 --
+-- -- Optional: Add highlighting on yank (copy)
+vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+    group = 'YankHighlight',
+    callback = function()
+        -- Use the custom highlight group for yank highlighting
+        vim.highlight.on_yank({ timeout = 200, higroup = 'YankHighlight' })
+    end,
+})
 -- -- Variable to store the current match ID
 -- local current_match_id = -1
 --
@@ -33,18 +43,3 @@
 --     group = 'HighlightWord',
 --     callback = highlight_word,
 -- })
---
--- Define a custom highlight group for yank highlighting
-vim.cmd [[
-  highlight YankHighlight guibg=#FFD700 guifg=#000000 ctermbg=214 ctermfg=0
-]]
---
--- -- Optional: Add highlighting on yank (copy)
-vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    group = 'YankHighlight',
-    callback = function()
-        -- Use the custom highlight group for yank highlighting
-        vim.highlight.on_yank({ timeout = 200, higroup = 'YankHighlight' })
-    end,
-})

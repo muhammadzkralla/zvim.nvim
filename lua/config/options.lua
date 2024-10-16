@@ -40,3 +40,6 @@ vim.opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
 
 --autoread files
 vim.opt.autoread = true
+
+-- Enable highlighting for the word under the cursor
+vim.opt.cursorline = true -- Highlight the current line

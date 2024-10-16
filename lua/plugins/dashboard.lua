@@ -28,7 +28,7 @@ Configed by Z for Zcoding 👽
     \'       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
     ]]
 
-    logo = string.rep("\n", 8) .. logo .. "\n" .. additional_art .. "\n\n"
+    logo = string.rep("\n", 8) .. logo .. "\n" .. additional_art
 
     local opts = {
       theme = "doom",
