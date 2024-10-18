@@ -16,9 +16,19 @@ return {
                 command = '/home/zkrallah/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
             }
 
+            dap.adapters.codelldb = {
+                type = 'server',
+                port = "${port}",
+                executable = {
+                    command = '/home/zkrallah/.local/share/nvim/mason/bin/codelldb', -- Path to lldb-vscode
+                    args = { "--port", "${port}" },
+                },
+                name = "lldb"
+            }
+
             dap.configurations.cpp = {
                 {
-                    name = "Launch file",
+                    name = "Launch file using cpppdbg",
                     type = "cppdbg",
                     request = "launch",
                     program = function()
@@ -26,6 +36,18 @@ return {
                     end,
                     cwd = '${workspaceFolder}',
                     stopAtEntry = true,
+                },
+                {
+                    name = "Launch file using codelldb",
+                    type = "codelldb",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopAtEntry = false,
+                    args = {},
+                    runInTerminal = false,
                 },
                 {
                     name = 'Attach to gdbserver :1234',
