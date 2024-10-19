@@ -5,7 +5,7 @@ return {
         require('lualine').setup {
             options = {
                 icons_enabled = true,
-                theme = 'auto',
+                theme = 'codedark',
                 component_separators = '|',
                 section_separators = '',
             },
@@ -13,7 +13,19 @@ return {
                 lualine_a = { 'mode' },
                 lualine_b = { 'branch' },
                 lualine_c = { 'filename' },
-                lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                lualine_x = { 'encoding', 'fileformat', 'filetype',
+                    {
+                        "diagnostics",
+                        symbols = {
+                            error = icons.diagnostics.Error,
+                            warn = icons.diagnostics.Warn,
+                            info = icons.diagnostics.Info,
+                            hint = icons.diagnostics.Hint,
+                        },
+                        colored = true,
+                        always_visible = true,
+                    },
+                },
                 lualine_y = {
                     'progress',
                     function()
