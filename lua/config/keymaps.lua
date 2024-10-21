@@ -179,10 +179,22 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, si
 vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
--- Jump forward in a snippet with <Tab>
-vim.api.nvim_set_keymap("i", "<Tab>", [[<cmd>lua if require'luasnip'.expand_or_jumpable() then require'luasnip'.jump(1) else vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n', true) end<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap("s", "<Tab>", [[<cmd>lua if require'luasnip'.jumpable(1) then require'luasnip'.jump(1) end<CR>]], { noremap = true, silent = true })
+local luasnip = require("luasnip")
 
--- Jump backward in a snippet with <Shift-Tab>
-vim.api.nvim_set_keymap("i", "<S-Tab>", [[<cmd>lua if require'luasnip'.jumpable(-1) then require'luasnip'.jump(-1) else vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<S-Tab>', true, true, true), 'n', true) end<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap("s", "<S-Tab>", [[<cmd>lua if require'luasnip'.jumpable(-1) then require'luasnip'.jump(-1) end<CR>]], { noremap = true, silent = true })
+-- Remap Enter to jump to the next snippet field
+vim.keymap.set({ "i", "s" }, "<CR>", function()
+    if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+    else
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, false, true), "n", true)
+    end
+end, { silent = true })
+
+-- Remap Shift+Tab to jump to the previous snippet field
+vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+    if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+    else
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n", true)
+    end
+end, { silent = true })
