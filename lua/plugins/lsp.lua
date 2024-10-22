@@ -17,10 +17,65 @@ return {
             require("mason-lspconfig").setup_handlers({
                 function(server_name) -- Default handler
                     require("lspconfig")[server_name].setup({
-                        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                        on_attach = function(client, bufnr)
+                            -- Optional: Custom on_attach function to set keymaps, etc.
+                        end,
                     })
                 end,
-                -- Add more custom setups for specific servers if needed
+
+                -- Custom setup for Lua language server
+                ["lua_ls"] = function()
+                    require("lspconfig").lua_ls.setup({
+                        settings = {
+                            Lua = {
+                                runtime = {
+                                    version = "Lua 5.1",
+                                },
+                                diagnostics = {
+                                    globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+                                },
+                                workspace = {
+                                    library = vim.api.nvim_get_runtime_file("", true), -- Make Neovim runtime files discoverable
+                                    checkThirdParty = false,                           -- Avoid popping up workspace notifications
+                                },
+                                telemetry = {
+                                    enable = false, -- Disable telemetry to avoid sending data
+                                },
+                                codeLens = {
+                                    enable = true,
+                                },
+                                completion = {
+                                    callSnippet = "Replace",
+                                },
+                                doc = {
+                                    privateName = { "^_" },
+                                },
+                                hint = {
+                                    enable = true,
+                                    setType = false,
+                                    paramType = true,
+                                    paramName = "Disable",
+                                    semicolon = "Disable",
+                                    arrayIndex = "Disable",
+                                },
+                            },
+                        },
+                    })
+                end,
+
+                ["kotlin_language_server"] = function()
+                    require('lspconfig').kotlin_language_server.setup({
+                        cmd = { 'kotlin-language-server' },
+                        root_dir = require('lspconfig.util').root_pattern('settings.gradle', 'settings.gradle.kts',
+                            'build.gradle', 'build.gradle.kts', 'pom.xml', '.git'),
+                        on_attach = function(client, bufnr)
+                            -- Set up buffer-local keybindings, etc.
+                        end,
+                        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                    })
+                end
+
             })
         end,
     },
@@ -161,47 +216,6 @@ return {
                     end,
                 },
             })
-
-            -- Setup LSP servers
-            require("mason-lspconfig").setup_handlers({
-                function(server_name) -- Default handler
-                    require("lspconfig")[server_name].setup({
-                        capabilities = require('cmp_nvim_lsp').default_capabilities(),
-                        on_attach = function(client, bufnr)
-                            -- Enable signature help
-                            require("lsp_signature").on_attach({
-                                bind = true,
-                                handler_opts = {
-                                    border = "rounded"
-                                },
-                                toggle_key = '<M-x>',
-                            }, bufnr)
-                        end,
-                    })
-                end,
-            })
-
-            require("lspconfig").lua_ls.setup {
-                capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        runtime = { version = "Lua 5.1" },
-                        diagnostics = {
-                            globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                        }
-                    }
-                }
-            }
-
-            require('lspconfig').kotlin_language_server.setup {
-                cmd = { "kotlin-language-server" },
-                filetypes = { "kotlin" },
-                root_dir = function(fname)
-                    return vim.loop.cwd() -- or adjust to a specific known directory
-                end,
-                autostart = true,
-            }
-
 
             -- Use buffer source for `/` in command mode
             cmp.setup.cmdline('/', {
