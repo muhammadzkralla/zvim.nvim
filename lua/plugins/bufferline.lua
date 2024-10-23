@@ -1,6 +1,4 @@
 return {
-  -- Other plugins ...
-
   -- Bufferline configuration
   {
     "akinsho/bufferline.nvim",
@@ -13,7 +11,7 @@ return {
           right_mouse_command = "bdelete! %d",
           middle_mouse_command = "bdelete! %d",
           offsets = {
-            { filetype = "NvimTree", text = "File Explorer", text_align = "center", separator = true }
+            { filetype = "neo-tree", text = "File Explorer", highlight = "Directory", text_align = "left" }
           },
           separator_style = "thin",
           diagnostics = "nvim_lsp",
@@ -26,4 +24,3 @@ return {
     end,
   },
 }
-
