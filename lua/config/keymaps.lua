@@ -29,6 +29,9 @@ vim.keymap.set("x", "<C-x>", '"+d', { desc = "cut to system clipboard", noremap 
 -- copy to system clipboard (visual mode)
 vim.keymap.set("x", "<C-c>", '"+y', { desc = "copy to system clipboard", noremap = true, silent = true })
 
+-- copy the whole paragraph to sys clipboard
+vim.api.nvim_set_keymap('n', 'yap', '"+yap', { noremap = true, silent = true })
+
 -- paste from system clipboard (insert mode)
 vim.keymap.set("i", "<C-v>", '<Esci>"+pgI', { desc = "paste from system clipboard", noremap = true, silent = true })
 
@@ -167,8 +170,6 @@ vim.keymap.set('n', '<C-b>', function() require('telescope.builtin').live_grep()
 
 -- delete
 vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'dw', '"_dw', { noremap = true, silent = true })
 
 -- window resize
 -- Resize window horizontally using Ctrl + Left/Right Arrow
