@@ -2,11 +2,11 @@
 
 My customized NeoVim configuration and development environment. 🥷😈
 
-![image1](images/image1.png) <hr>
-![image2](images/image2.png) <hr>
-![image3](images/image3.png) <hr>
-![image4](images/image4.png) <hr>
-![image5](images/image5.png) <hr>
+![img1](images/img1.png) <hr>
+![img2](images/img2.png) <hr>
+![img3](images/img3.png) <hr>
+![img4](images/img4.png) <hr>
+![img5](images/img5.png) <hr>
 
 # Installation
 You can run this bash script and it will automatically install all the prerequisites and required software to be able to operate NeoVim with my set of plugins, options, and keymaps. 👽🍃<br>

@@ -1,6 +1,6 @@
 vim.cmd.colorscheme("rose-pine")
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
