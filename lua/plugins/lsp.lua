@@ -64,21 +64,6 @@ return {
                     end,
                 },
                 mapping = {
-                    ['<Tab>'] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_next_item() -- Navigate to next completion item
-                        else
-                            fallback()             -- Insert a tab character
-                        end
-                    end, { 'i', 's' }),            -- In insert and select mode
-
-                    ['<S-Tab>'] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item() -- Navigate to previous completion item
-                        else
-                            fallback()             -- Insert a tab character
-                        end
-                    end, { 'i', 's' }),            -- In insert and select mode
                     ['<Down>'] = cmp.mapping.select_next_item(),
                     ['<Up>'] = cmp.mapping.select_prev_item(),
                     ['<C-e>'] = cmp.mapping.abort(),

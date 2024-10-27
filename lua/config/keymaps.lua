@@ -183,11 +183,11 @@ vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = tru
 local luasnip = require("luasnip")
 
 -- Remap Enter to jump to the next snippet field
-vim.keymap.set({ "i", "s" }, "<CR>", function()
+vim.keymap.set({ "i", "s" }, "<Tab>", function()
     if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
     else
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, false, true), "n", true)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true)
     end
 end, { silent = true })
 
