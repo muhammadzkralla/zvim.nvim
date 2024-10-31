@@ -24,6 +24,8 @@ return {
                     })
                 end,
 
+                ["jdtls"] = function() end, -- Prevent Mason from attaching `jdtls`
+
                 -- Custom setup for Lua language server
                 ["lua_ls"] = function()
                     require("lspconfig").lua_ls.setup({
