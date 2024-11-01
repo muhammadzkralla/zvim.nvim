@@ -107,15 +107,15 @@ return {
                 if client and client.name == "jdtls" then
                     -- Default keymaps
                     local buf = args.buf
-                    vim.api.nvim_buf_set_keymap(buf, "n", "<leader>cxv",
-                        [[<Cmd>lua require('jdtls').extract_variable_all()<CR>]], { desc = "Extract Variable" })
-                    vim.api.nvim_buf_set_keymap(buf, "n", "<leader>cxc",
-                        [[<Cmd>lua require('jdtls').extract_constant()<CR>]], { desc = "Extract Constant" })
-                    vim.api.nvim_buf_set_keymap(buf, "n", "gs", [[<Cmd>lua require('jdtls').super_implementation()<CR>]],
-                        { desc = "Goto Super" })
-                    vim.api.nvim_buf_set_keymap(buf, "n", "<leader>co",
-                        [[<Cmd>lua require('jdtls').organize_imports()<CR>]], { desc = "Organize Imports" })
-
+                    -- vim.api.nvim_buf_set_keymap(buf, "n", "<leader>cxv",
+                    --     [[<Cmd>lua require('jdtls').extract_variable_all()<CR>]], { desc = "Extract Variable" })
+                    -- vim.api.nvim_buf_set_keymap(buf, "n", "<leader>cxc",
+                    --     [[<Cmd>lua require('jdtls').extract_constant()<CR>]], { desc = "Extract Constant" })
+                    -- vim.api.nvim_buf_set_keymap(buf, "n", "gs", [[<Cmd>lua require('jdtls').super_implementation()<CR>]],
+                    --     { desc = "Goto Super" })
+                    -- vim.api.nvim_buf_set_keymap(buf, "n", "<leader>co",
+                    --     [[<Cmd>lua require('jdtls').organize_imports()<CR>]], { desc = "Organize Imports" })
+                    --
                     -- Debug and test mappings if nvim-dap is enabled
                     if opts.dap and mason_registry.is_installed("java-debug-adapter") then
                         require("jdtls").setup_dap(opts.dap)
