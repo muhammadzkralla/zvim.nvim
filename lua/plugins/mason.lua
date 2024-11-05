@@ -76,6 +76,19 @@ return {
                         end,
                         capabilities = require('cmp_nvim_lsp').default_capabilities(),
                     })
+                end,
+
+                ["arduino_language_server"] = function()
+                    require('lspconfig').arduino_language_server.setup({
+                        cmd = {
+                            "arduino-language-server",
+                            "-cli-config", "/home/zkrallah/.arduino15/arduino-cli.yaml", -- Path to your arduino-cli.yaml file
+                            "-fqbn", "esp32:esp32:esp32"       -- Replace with your board’s fully qualified board name (FQBN)
+                        },
+                        on_attach = function(client, bufnr)
+                            -- Optional: Set key mappings or custom settings here
+                        end,
+                    })
                 end
 
             })
