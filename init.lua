@@ -1,4 +1,4 @@
-require("config.init")
+require("config.icons")
 require("config.lazy")
 require("config.keymaps")
 require("config.autocmds")
