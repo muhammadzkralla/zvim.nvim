@@ -1,14 +1,24 @@
--- Define a custom highlight group for yank highlighting
-vim.cmd [[
-  highlight YankHighlight guibg=#FFD700 guifg=#000000 ctermbg=214 ctermfg=0
-]]
---
--- -- Optional: Add highlighting on yank (copy)
+-- Define a function to set the custom yank highlight group
+local function setup_yank_highlight()
+    vim.cmd [[
+        highlight YankHighlight guibg=#FFD700 guifg=#000000 ctermbg=214 ctermfg=0
+    ]]
+end
+
+-- Apply yank highlight after colorscheme loads
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = setup_yank_highlight,
+})
+
+-- Run the setup function initially
+setup_yank_highlight()
+
+-- Set up yank highlighting autocmd
 vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
     group = 'YankHighlight',
     callback = function()
-        -- Use the custom highlight group for yank highlighting
         vim.highlight.on_yank({ timeout = 200, higroup = 'YankHighlight' })
     end,
 })
