@@ -11,7 +11,8 @@ return {
           right_mouse_command = "bdelete! %d",
           middle_mouse_command = "bdelete! %d",
           indicator = {
-            style = "underline",  -- Highlight active buffer with underline for clarity
+            icon = "☕",
+            style = "icon",  -- Highlight active buffer with underline for clarity
           },
           offsets = {
             { filetype = "neo-tree", text = "File Explorer", highlight = "Directory", text_align = "left" }
