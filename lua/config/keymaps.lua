@@ -131,6 +131,10 @@ vim.keymap.set(
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "select and move", noremap = true, silent = true })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "select and move", noremap = true, silent = true })
 
+-- Keep selection when indenting in visual mode
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and keep selection" })
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and keep selection" })
+
 --bufferlin
 -- Key mappings for buffer navigation and management
 vim.api.nvim_set_keymap('n', 'H', '<cmd>BufferLineCyclePrev<CR>', { noremap = true, silent = true })            -- Go to the left buffer
