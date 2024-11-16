@@ -13,7 +13,8 @@ return {
             dap.adapters.cppdbg = {
                 id = 'cppdbg',
                 type = 'executable',
-                command = '/home/zkrallah/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+                command =
+                '/home/zkrallah/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
             }
 
             dap.adapters.codelldb = {

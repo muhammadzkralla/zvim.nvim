@@ -2,7 +2,7 @@ return {
     "RRethy/vim-illuminate",
     config = function()
         require('illuminate').configure({
-            delay = 100,                                            -- Optional: adjust the delay before highlighting
+            delay = 100,                                                         -- Optional: adjust the delay before highlighting
             filetypes_denylist = { 'NvimTree', 'TelescopePrompt', "dashboard" }, -- Optional: filetypes to ignore
         })
 
