@@ -21,14 +21,20 @@ function M.setup(opts)
     M.config = vim.tbl_deep_extend("force", M.config, opts or {})
 end
 
+-- TODO: Create a prompt dialog instead of regular vim command questions.
 local function prompt_questions(filetype)
-    local questions = M.config.filetype_questions[filetype] or M.config.filetype_questions["*"]
+    -- Get the questions for the specific filetype and default questions
+    local specific_questions = M.config.filetype_questions[filetype] or {}
+    local default_questions = M.config.filetype_questions["*"] or {}
+
+    -- Merge the questions (default questions first, followed by specific questions)
+    local questions = vim.list_extend(vim.deepcopy(default_questions), specific_questions)
 
     for _, question in ipairs(questions) do
         local answer = vim.fn.input(question)
         if answer:lower() == "q" then
             print("Process aborted")
-            return false
+            return true
         elseif answer:lower() ~= "y" then
             print("Save cancelled")
             return false
@@ -39,14 +45,18 @@ end
 
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
+        -- get the file type
         local filetype = vim.bo.filetype
+
+        -- check if the file type is in the bypass list
         if vim.tbl_contains(M.config.bypass_filetypes, filetype) then
             return
         end
+
+        -- Prompt questions, cancel save if necessary
         if not prompt_questions(filetype) then
-            vim.api.nvim_command("echohl WarningMsg | echom 'Save cancelled or aborted' | echohl None")
-            vim.cmd("echo ''")
-            return true
+            vim.api.nvim_err_writeln("Save cancelled or aborted.")
+            -- TODO: abort the saving process and return back to buffer
         end
     end,
 })
