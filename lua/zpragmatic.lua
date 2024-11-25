@@ -26,15 +26,23 @@ local function create_popup(msg)
     return coroutine.create(function()
         -- Calculate popup dimensions
         local width = 50
-        local height = 15
+        local height = 5
         local row = math.floor((vim.o.lines - height) / 2) -- Center vertically
         local col = math.floor((vim.o.columns - width) / 2) -- Center horizontally
 
         -- Create a buffer
         local buf = vim.api.nvim_create_buf(false, true) -- No file, scratch buffer
 
+        local lines = {
+            msg,
+            "",
+            "Press y to approve.",
+            "Press n to cancel saving and return to buffer.",
+            "Press q to abort questions and save anyway."
+        }
+
         -- Set the content of the buffer
-        vim.api.nvim_buf_set_lines(buf, 0, -1, false, { msg, "Type 'y', 'n', or 'q' and press Enter." })
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 
         -- Open a floating window
         local win = vim.api.nvim_open_win(buf, true, {
