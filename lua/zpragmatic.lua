@@ -21,7 +21,43 @@ function M.setup(opts)
     M.config = vim.tbl_deep_extend("force", M.config, opts or {})
 end
 
--- TODO: Create a prompt dialog instead of regular vim command questions.
+-- Function to create a pop-up window for a question
+local function create_popup(msg)
+    return coroutine.create(function()
+        -- Calculate popup dimensions
+        local width = 50
+        local height = 15
+        local row = math.floor((vim.o.lines - height) / 2) -- Center vertically
+        local col = math.floor((vim.o.columns - width) / 2) -- Center horizontally
+
+        -- Create a buffer
+        local buf = vim.api.nvim_create_buf(false, true) -- No file, scratch buffer
+
+        -- Set the content of the buffer
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, { msg, "Type 'y', 'n', or 'q' and press Enter." })
+
+        -- Open a floating window
+        local win = vim.api.nvim_open_win(buf, true, {
+            relative = "editor",
+            width = width,
+            height = height,
+            row = row,
+            col = col,
+            style = "minimal",
+            border = "rounded",
+        })
+
+        -- Get the user input
+        vim.cmd("redraw")
+        local answer = vim.fn.getcharstr()
+
+        -- Close the pop-up
+        vim.api.nvim_win_close(win, true)
+        return answer
+    end)
+end
+
+-- Function to prompt questions
 local function prompt_questions(filetype)
     -- Get the questions for the specific filetype and default questions
     local specific_questions = M.config.filetype_questions[filetype] or {}
@@ -31,7 +67,9 @@ local function prompt_questions(filetype)
     local questions = vim.list_extend(vim.deepcopy(default_questions), specific_questions)
 
     for _, question in ipairs(questions) do
-        local answer = vim.fn.input(question)
+        local co = create_popup(question)
+        local _, answer = coroutine.resume(co)
+
         if answer:lower() == "q" then
             print("Process aborted")
             return true
