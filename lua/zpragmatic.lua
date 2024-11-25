@@ -26,15 +26,19 @@ local function create_popup(msg)
     return coroutine.create(function()
         -- Calculate popup dimensions
         local width = 50
-        local height = 5
-        local row = math.floor((vim.o.lines - height) / 2) -- Center vertically
+        local height = 7
+        local row = math.floor((vim.o.lines - height) / 2)  -- Center vertically
         local col = math.floor((vim.o.columns - width) / 2) -- Center horizontally
 
         -- Create a buffer
         local buf = vim.api.nvim_create_buf(false, true) -- No file, scratch buffer
 
+        -- Add the title, centered
+        local title_line = string.rep(" ", math.floor((width - #msg) / 2)) .. msg
+
         local lines = {
-            msg,
+            "",
+            title_line,
             "",
             "Press y to approve.",
             "Press n to cancel saving and return to buffer.",
@@ -53,6 +57,8 @@ local function create_popup(msg)
             col = col,
             style = "minimal",
             border = "rounded",
+            title = "Zpragmatic",
+            title_pos = "center",
         })
 
         -- Get the user input
@@ -104,7 +110,7 @@ vim.api.nvim_create_autocmd("BufWriteCmd", {
 
         -- Prompt questions, cancel save if necessary
         if not prompt_questions(filetype) then
-            vim.api.nvim_err_writeln("Save aborted for failed checks, returning back to buffer.")
+            print("Save aborted for failed checks, returning back to buffer.")
             return
         end
 
