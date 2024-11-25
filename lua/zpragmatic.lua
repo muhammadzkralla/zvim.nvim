@@ -43,21 +43,28 @@ local function prompt_questions(filetype)
     return true
 end
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWriteCmd", {
     callback = function()
-        -- get the file type
+        -- Get the file type
         local filetype = vim.bo.filetype
 
-        -- check if the file type is in the bypass list
+        -- Check if the file type is in the bypass list
         if vim.tbl_contains(M.config.bypass_filetypes, filetype) then
+            -- Perform the save operation as normal
+            local filepath = vim.api.nvim_buf_get_name(0)
+            vim.cmd("write! " .. filepath)
             return
         end
 
         -- Prompt questions, cancel save if necessary
         if not prompt_questions(filetype) then
-            vim.api.nvim_err_writeln("Save cancelled or aborted.")
-            -- TODO: abort the saving process and return back to buffer
+            vim.api.nvim_err_writeln("Save aborted for failed checks, returning back to buffer.")
+            return
         end
+
+        -- Perform the save operation if all checks pass
+        local filepath = vim.api.nvim_buf_get_name(0)
+        vim.cmd("write! " .. filepath)
     end,
 })
 
