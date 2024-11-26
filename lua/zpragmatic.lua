@@ -95,7 +95,10 @@ local function prompt_questions(filetype)
     return true
 end
 
+local my_group = vim.api.nvim_create_augroup("zpragmatic", { clear = true })
+
 vim.api.nvim_create_autocmd("BufWriteCmd", {
+    group = my_group,
     callback = function()
         -- Get the file type
         local filetype = vim.bo.filetype
