@@ -1,3 +1,4 @@
+return {}
 -- return -- lazy.nvim
 -- {
 --     "folke/noice.nvim",
