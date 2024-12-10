@@ -89,6 +89,21 @@ return {
                             -- Optional: Set key mappings or custom settings here
                         end,
                     })
+                end,
+
+                ["pyright"] = function()
+                    require('lspconfig').pyright.setup({
+                        settings = {
+                            python = {
+                                analysis = {
+                                    pythonPath = "/usr/bin/python3",
+                                    autoSearchPaths = true,
+                                    useLibraryCodeForTypes = true,
+                                    typeCheckingMode = "basic", -- Change to "strict" for more detailed checks
+                                },
+                            },
+                        },
+                    })
                 end
 
             })
