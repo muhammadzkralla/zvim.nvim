@@ -35,6 +35,12 @@ vim.api.nvim_set_keymap('n', 'yap', '"+yap', { noremap = true, silent = true })
 -- paste from system clipboard (insert mode)
 vim.keymap.set("i", "<C-v>", '<Esci>"+pgI', { desc = "paste from system clipboard", noremap = true, silent = true })
 
+-- override delete in the void register 
+vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
+
+-- override copy to system clipboard register
+vim.api.nvim_set_keymap('n', 'y', '"+y', { noremap = true, silent = true })
+
 -- Key mapping for Ctrl+s to save the current file in Normal mode
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 
@@ -171,9 +177,6 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { desc = "top window", noremap =
 
 vim.keymap.set('n', '<C-b>', function() require('telescope.builtin').live_grep() end,
     { desc = "find text", noremap = true, silent = true })
-
--- delete
-vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
 
 -- window resize
 -- Resize window horizontally using Ctrl + Left/Right Arrow
