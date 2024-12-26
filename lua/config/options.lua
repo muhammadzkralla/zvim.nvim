@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("edge")
+vim.cmd.colorscheme("rose-pine")
 
 vim.opt.wrap = true
 vim.opt.number = true
