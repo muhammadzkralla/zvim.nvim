@@ -47,18 +47,18 @@ vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true 
 -- Key mapping for Ctrl+s to save the current file in Insert mode and stay in Insert mode
 vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
 
--- Open code actions with Ctrl-Q in normal mode
+-- Open code actions with Alt-Q in normal mode
 vim.keymap.set(
     "n",
-    "<C-q>",
+    "<M-q>",
     "<cmd>lua vim.lsp.buf.code_action()<CR>",
     { noremap = true, silent = true, desc = "Open code actions" }
 )
 
--- Open code actions with Ctrl-Q in insert mode (switches to normal mode first)
+-- Open code actions with Alt-Q in insert mode (switches to normal mode first)
 vim.keymap.set(
     "i",
-    "<C-q>",
+    "<M-q>",
     "<Esc><cmd>lua vim.lsp.buf.code_action()<CR>i",
     { noremap = true, silent = true, desc = "Open code actions" }
 )
