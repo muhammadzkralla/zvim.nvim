@@ -38,6 +38,10 @@ vim.opt.undofile = true
 -- Set undo directory to LazyVim's location
 vim.opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
 
+-- Reasonable limits for undo history
+vim.opt.undolevels = 500 -- Save up to 500 undo steps per file
+vim.opt.undoreload = 5000 -- Reload up to 5000 lines for undo
+
 --autoread files
 vim.opt.autoread = true
 
