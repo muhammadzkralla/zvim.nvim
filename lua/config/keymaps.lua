@@ -206,3 +206,9 @@ vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n", true)
     end
 end, { silent = true })
+
+local zdraw = require("zdraw")
+
+-- Keymaps to toggle drawing mode
+vim.keymap.set('n', '<leader>ds', zdraw.start_drawing, { desc = "Start Drawing" })
+vim.keymap.set('n', '<leader>de', zdraw.stop_drawing, { desc = "Stop Drawing" })
