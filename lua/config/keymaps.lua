@@ -212,3 +212,7 @@ local zdraw = require("zdraw")
 -- Keymaps to toggle drawing mode
 vim.keymap.set('n', '<leader>ds', zdraw.start_drawing, { desc = "Start Drawing" })
 vim.keymap.set('n', '<leader>de', zdraw.stop_drawing, { desc = "Stop Drawing" })
+
+-- Keymaps to center cursor in screen
+vim.keymap.set('n', 'j', 'jzz', {noremap = false, silent = true, desc = "center cursor"})
+vim.keymap.set('n', 'k', 'kzz', {noremap = false, silent = true, desc = "center cursor"})
