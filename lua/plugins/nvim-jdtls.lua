@@ -54,6 +54,10 @@ return {
                         },
                     },
                 },
+                -- Disable semantic tokens
+                semanticHighlighting = {
+                    enabled = false,
+                },
             },
         }
     end,
@@ -89,6 +93,9 @@ return {
                 init_options = { bundles = bundles },
                 settings = opts.settings,
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                on_attach = function(client, _)
+                    client.server_capabilities.semanticTokensProvider = nil -- Disable LSP semantic highlighting
+                end,
             }, opts.jdtls or {})
 
             require("jdtls").start_or_attach(config)
