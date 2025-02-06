@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("rose-pine-moon")
+vim.cmd.colorscheme("onedark")
 
 vim.opt.wrap = true
 vim.opt.number = true

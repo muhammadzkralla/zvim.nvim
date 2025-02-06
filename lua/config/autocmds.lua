@@ -1,8 +1,14 @@
 -- Set up yank highlighting
 vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 
--- Define the highlight group
-vim.cmd [[highlight YankHighlight guibg=#FFD700 guifg=#000000 ctermbg=214 ctermfg=0]]
+-- Ensure the highlight group is defined after colorscheme loads
+vim.api.nvim_create_autocmd("ColorScheme", {
+    group = "YankHighlight",
+    pattern = "*",
+    callback = function()
+        vim.cmd [[highlight YankHighlight guibg=#FFD700 guifg=#000000 ctermbg=214 ctermfg=0]]
+    end,
+})
 
 -- Create the autocmd for highlighting on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
