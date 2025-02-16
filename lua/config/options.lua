@@ -2,7 +2,7 @@ vim.cmd.colorscheme("onedark")
 
 vim.opt.wrap = true
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Set tab width to 4 spaces
 vim.opt.tabstop = 4
