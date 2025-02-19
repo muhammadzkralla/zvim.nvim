@@ -15,12 +15,14 @@ return {
                         '--column',
                         '--smart-case',
                         '--no-ignore', -- Include files ignored by .gitignore
-                        '--hidden',    -- Include hidden files
+                        '--hidden', -- Include hidden files
+                        '--glob', '!target/', -- Exclude the `target/` directory
+                        '--binary', -- Ignore all binary files
                     },
                 },
                 pickers = {
                     find_files = {
-                        find_command = { 'rg', '--files', '--hidden', '--no-ignore' },
+                        find_command = { 'rg', '--files', '--hidden', '--no-ignore', '--glob', '!target/', '--binary' },
                     },
                 },
                 extensions = {
