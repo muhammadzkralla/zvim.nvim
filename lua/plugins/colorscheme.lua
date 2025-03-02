@@ -135,5 +135,5 @@ return {
     --     require("night-owl").setup()
     --   end,
     -- },
-    -- { 'bettervim/yugen.nvim' }
+    { 'bettervim/yugen.nvim' }
 }

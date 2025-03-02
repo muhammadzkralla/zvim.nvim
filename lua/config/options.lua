@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("onedark")
+vim.cmd.colorscheme("yugen")
 
 vim.opt.wrap = true
 vim.opt.number = true
@@ -25,6 +25,10 @@ vim.g.autoformat = false
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+-- make the bg color black
+vim.o.background = "dark"
+vim.cmd("highlight Normal guibg=black")
 
 -- Change the background color of floating windows
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3f4145" }) -- background color
