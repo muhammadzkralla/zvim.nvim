@@ -2,7 +2,7 @@ vim.cmd.colorscheme("no-clown-fiesta")
 
 vim.opt.wrap = true
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- Set tab width to 4 spaces
 vim.opt.tabstop = 4
