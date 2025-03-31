@@ -216,3 +216,5 @@ vim.keymap.set('n', '<leader>de', zdraw.stop_drawing, { desc = "Stop Drawing" })
 -- Keymaps to center cursor in screen
 vim.keymap.set('n', 'j', 'jzz', {noremap = false, silent = true, desc = "center cursor"})
 vim.keymap.set('n', 'k', 'kzz', {noremap = false, silent = true, desc = "center cursor"})
+vim.keymap.set('n', '<Down>', '<Down>zz', {noremap = false, silent = true, desc = "center cursor"})
+vim.keymap.set('n', '<Up>', '<Up>zz', {noremap = false, silent = true, desc = "center cursor"})
