@@ -134,5 +134,17 @@ return {
                 }),
             }),
         })
+
+        ls.add_snippets("c", {
+            s("get_current_time_ms", {
+                t({
+                    "long long get_current_time_ms() {",
+                    "  struct timeval tv;",
+                    "  gettimeofday(&tv, NULL);",
+                    "  return (tv.tv_sec * 1000) + (tv.tv_usec / 1000);",
+                    "}",
+                }),
+            }),
+        })
     end,
 }
