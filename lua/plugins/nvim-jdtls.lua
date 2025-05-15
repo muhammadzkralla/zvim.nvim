@@ -3,8 +3,24 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     ft = { "java" }, -- Automatically load for Java files
     opts = function()
-        local mason_registry = require("mason-registry")
-        local lombok_jar = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
+        -- Use $MASON environment variable to find lombok.jar
+        local lombok_jar = vim.fn.expand("$MASON/share/jdtls/lombok.jar")
+
+        -- Verify the file actually exists
+        if vim.fn.filereadable(lombok_jar) == 0 then
+            vim.notify("lombok.jar not found at: " .. lombok_jar, vim.log.levels.WARN)
+            lombok_jar = nil
+        end
+
+        -- Fallback configuration if lombok.jar isn't found
+        if not lombok_jar then
+            vim.notify("Using jdtls without lombok support", vim.log.levels.WARN)
+            return {
+                root_dir = require("lspconfig").util.root_pattern(".git", "mvnw", "gradlew"),
+                cmd = { vim.fn.exepath("jdtls") },
+                -- other default configurations...
+            }
+        end
         return {
             -- Define the root directory using standard lspconfig
             root_dir = require("lspconfig").util.root_pattern(".git", "mvnw", "gradlew"),
