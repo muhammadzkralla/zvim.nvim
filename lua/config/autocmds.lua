@@ -25,3 +25,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank({ timeout = 200, higroup = 'YankHighlight' })
     end,
 })
+
+local ls = require("luasnip")
+
+-- Clear snippet session when leaving insert mode or moving cursor outside
+vim.api.nvim_create_autocmd({ "ModeChanged", "CursorMovedI" }, {
+    callback = function()
+        if ls.session.current_nodes[vim.api.nvim_get_current_buf()] and not ls.locally_jumpable(1) then
+            ls.unlink_current()
+        end
+    end,
+})

@@ -189,7 +189,7 @@ vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = tru
 
 local luasnip = require("luasnip")
 
--- Remap Enter to jump to the next snippet field
+-- Remap Tab to jump to the next snippet field
 vim.keymap.set({ "i", "s" }, "<Tab>", function()
     if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
