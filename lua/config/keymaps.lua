@@ -29,11 +29,14 @@ vim.keymap.set("x", "<C-x>", '"+d', { desc = "cut to system clipboard", noremap 
 -- copy to system clipboard (visual mode)
 vim.keymap.set("x", "<C-c>", '"+y', { desc = "copy to system clipboard", noremap = true, silent = true })
 
+-- paste from system clipboard (visual mode)
+vim.keymap.set("v", "<C-v>", '"+p', { desc = "paste from system clipboard", noremap = true, silent = true })
+
 -- copy the whole paragraph to sys clipboard
 vim.api.nvim_set_keymap('n', 'yap', '"+yap', { noremap = true, silent = true })
 
 -- paste from system clipboard (insert mode)
-vim.keymap.set("i", "<C-v>", '<Esci>"+pgI', { desc = "paste from system clipboard", noremap = true, silent = true })
+vim.keymap.set("i", "<C-v>", '<Esc>"+pa', { desc = "paste from system clipboard", noremap = true, silent = true })
 
 -- override delete in the void register 
 vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
