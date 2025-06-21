@@ -38,13 +38,9 @@ Configed by Z for Zcoding 👽
             config = {
                 header = vim.split(logo, "\n"),
                 center = {
-                    { action = "lua require('telescope.builtin').find_files()", desc = " Find File", icon = " ", key = "f" },
-                    { action = "enew | startinsert", desc = " New File", icon = " ", key = "n" },
                     { action = "lua require('telescope.builtin').oldfiles()", desc = " Recent Files", icon = " ", key = "r" },
                     { action = "lua require('telescope.builtin').live_grep()", desc = " Find Text", icon = " ", key = "g" },
                     { action = "edit $MYVIMRC | source $MYVIMRC", desc = " Config", icon = " ", key = "c" },
-                    { action = "lua require('persistence').load()", desc = " Restore Session", icon = " ", key = "s" },
-                    { action = function() vim.cmd("Lazy") end, desc = " Lazy", icon = "󰒲 ", key = "l" },
                     { action = function() vim.cmd("qa") end, desc = " Quit", icon = " ", key = "q" },
                 },
                 footer = function()
