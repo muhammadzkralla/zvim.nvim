@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("no-clown-fiesta")
+vim.cmd.colorscheme("rose-pine-moon")
 
 vim.opt.wrap = true
 vim.opt.number = true
@@ -51,3 +51,6 @@ vim.opt.autoread = true
 
 -- Enable highlighting for the word under the cursor
 vim.opt.cursorline = true -- Highlight the current line
+
+-- Enable automatic spell checking
+vim.opt.spell = true
