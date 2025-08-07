@@ -8,6 +8,9 @@ My customized NeoVim configuration and development environment. 🥷😈
 ![img4](images/img4.png) <hr>
 ![img5](images/img5.png) <hr>
 ![img6](images/img6.png) <hr>
+![img7](images/img7.png) <hr>
+![img8](images/img8.png) <hr>
+![img9](images/img9.png) <hr>
 
 # Installation
 For Debian-based machines, you can run this bash script and it will automatically install all the prerequisites and required software to be able to operate NeoVim with my set of plugins, options, configurations, and keymaps. 👽🍃 <br>
