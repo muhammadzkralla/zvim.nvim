@@ -24,11 +24,11 @@ This configuration was built from scratch using vanilla NeoVim. It’s tailored 
 ![img5](images/img5.png) <hr>
 ### Git Features and Files Analysis
 ![img6](images/img6.png) <hr>
-### Errors/Warnings/Info/Hint Diagnositcs
+### Errors/Warnings/Info/Hint Diagnostics
 ![img7](images/img7.png) <hr>
 ### Function Arguments Signature Help
 ![img8](images/img8.png) <hr>
-### Hover for Info and Docs.
+### Hover for Info and Docs
 ![img9](images/img9.png) <hr>
 
 As you can see from the screenshots, I can use this NeoVim setup with the same configs, motions, keymaps, workflow, and everything across different multiple languages and I don't have to install a dedicated IDE for each language or switch between different editors. This setup gives me complete freedom, maximum productivity, and full control over the development environment.
@@ -93,6 +93,9 @@ echo "# You can now start Neovim with the command #"
 echo "#               'nvim'                      #"
 echo "#############################################"
 ```
+
+> [!NOTE]
+> This bash script installs the latest unstable version of NeoVim which is the fastest way to install NeoVim. However, I recommend cloning the official NeoVim repository and building it from source for a more stable experience.
 
 Make it executable : 
 ```bash
