@@ -13,7 +13,18 @@ This configuration was built from scratch using vanilla NeoVim. It’s tailored 
 ## Preview
 
 ### Dashboard
-![img1](images/img1.png) <hr>
+
+<table align="center">
+  <tr>
+    <td><img src="images/img1.png"/></td>
+    <td><img src="images/img10.png"/></td>
+    <td><img src="images/img11.png"/></td>
+    <td><img src="images/img12.png"/></td>
+    <td><img src="images/img13.png"/></td>
+  </tr>
+</table>
+
+<!-- ![img1](images/img1.png) <hr> -->
 ### File Tree
 ![img2](images/img2.png) <hr>
 ### Code Completion Suggestions with Information and Signature
