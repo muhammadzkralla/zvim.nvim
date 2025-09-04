@@ -16,9 +16,10 @@ This configuration was built from scratch using vanilla NeoVim. It’s tailored 
 
 <table align="center">
   <tr>
-    <td><img src="images/img1.png"/></td>
     <td><img src="images/img10.png"/></td>
     <td><img src="images/img11.png"/></td>
+  </tr>
+  <tr>
     <td><img src="images/img12.png"/></td>
     <td><img src="images/img13.png"/></td>
   </tr>
