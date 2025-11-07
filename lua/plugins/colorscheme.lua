@@ -154,10 +154,5 @@ return {
     },
     {
         "p00f/alabaster.nvim",
-        config = function()
-            vim.g.alabaster_dim_comments = false
-            vim.g.alabaster_floatborder  = false
-            vim.cmd("colorscheme alabaster")
-        end
     }
 }
