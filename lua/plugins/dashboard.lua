@@ -455,7 +455,7 @@ Configed by Z for Zcoding 👽
                 footer = function()
                     local stats = require("lazy").stats()
                     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                    return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+                    return { "loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
                 end,
             },
         }

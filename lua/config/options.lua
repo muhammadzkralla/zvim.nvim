@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("no-clown-fiesta")
+vim.cmd.colorscheme("rose-pine-moon")
 
 vim.opt.wrap = true
 vim.opt.number = true
