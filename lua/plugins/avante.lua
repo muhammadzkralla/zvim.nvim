@@ -10,16 +10,11 @@ return {
     opts = {
         -- this file can contain specific instructions for your project
         instructions_file = "avante.md",
-        provider = "gemini",
+        provider = "copilot",
         providers = {
 
-            gemini = {
-                model = "gemini-2.5-flash-lite",
-                -- In 2026, request parameters go inside extra_request_body
-                extra_request_body = {
-                    max_tokens = 8192,
-                    temperature = 0,
-                },
+            copilot = {
+                model = "gpt-4.1",
             },
 
             claude = {
@@ -53,7 +48,16 @@ return {
         "stevearc/dressing.nvim",        -- for input provider dressing
         "folke/snacks.nvim",             -- for input provider snacks
         "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",        -- for providers='copilot'
+        {
+            "zbirenbaum/copilot.lua",
+            event = "VeryLazy",
+            config = function()
+                require("copilot").setup({
+                    suggestion = { enabled = false },
+                    panel = { enabled = false },
+                })
+            end,
+        },
         {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",
